@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000A68CC18B06100005340BA /* GestrController.h in Headers */ = {isa = PBXBuildFile; fileRef = 000A68CA18B06100005340BA /* GestrController.h */; };
+		000A68CD18B06100005340BA /* GestrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A68CB18B06100005340BA /* GestrController.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		000CAE3218B06BAA000A77AF /* GestureSetupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3018B06BAA000A77AF /* GestureSetupController.h */; };
+		000CAE3318B06BAA000A77AF /* GestureSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3118B06BAA000A77AF /* GestureSetupController.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		000CAE3618B06BC0000A77AF /* GestureRecognitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3418B06BC0000A77AF /* GestureRecognitionController.h */; };
+		000CAE3718B06BC0000A77AF /* GestureRecognitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3E18B07356000A77AF /* GestureRecognitionView.h */; };
+		000CAE4118B07356000A77AF /* GestureRecognitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3F18B07356000A77AF /* GestureRecognitionView.m */; };
+		009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609BD18B11D3000F8AD1E /* GestureSetupView.h */; };
+		009609C018B11D3000F8AD1E /* GestureSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609BE18B11D3000F8AD1E /* GestureSetupView.m */; };
 		009C9A4918B03F5000CFF391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009C9A4818B03F5000CFF391 /* Foundation.framework */; };
 		009C9A4B18B03F5000CFF391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009C9A4A18B03F5000CFF391 /* UIKit.framework */; };
 		009C9A5418B03F5000CFF391 /* Gestr.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A5318B03F5000CFF391 /* Gestr.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
@@ -28,6 +38,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000A68CA18B06100005340BA /* GestrController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestrController.h; sourceTree = "<group>"; };
+		000A68CB18B06100005340BA /* GestrController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestrController.m; sourceTree = "<group>"; };
+		000CAE3018B06BAA000A77AF /* GestureSetupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureSetupController.h; sourceTree = "<group>"; };
+		000CAE3118B06BAA000A77AF /* GestureSetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureSetupController.m; sourceTree = "<group>"; };
+		000CAE3418B06BC0000A77AF /* GestureRecognitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionController.h; sourceTree = "<group>"; };
+		000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionController.m; sourceTree = "<group>"; };
+		000CAE3E18B07356000A77AF /* GestureRecognitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionView.h; sourceTree = "<group>"; };
+		000CAE3F18B07356000A77AF /* GestureRecognitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionView.m; sourceTree = "<group>"; };
+		009609BD18B11D3000F8AD1E /* GestureSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureSetupView.h; sourceTree = "<group>"; };
+		009609BE18B11D3000F8AD1E /* GestureSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureSetupView.m; sourceTree = "<group>"; };
 		009C9A4518B03F5000CFF391 /* Gestr.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Gestr.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		009C9A4818B03F5000CFF391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		009C9A4A18B03F5000CFF391 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -69,6 +89,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000A68CE18B06AFC005340BA /* Gesture Setup */ = {
+			isa = PBXGroup;
+			children = (
+				000CAE3B18B07324000A77AF /* View */,
+				000CAE3A18B0731E000A77AF /* Model */,
+				000CAE3918B07317000A77AF /* Controller */,
+			);
+			name = "Gesture Setup";
+			sourceTree = "<group>";
+		};
+		000A68CF18B06B15005340BA /* Gesture Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				000CAE3D18B0732D000A77AF /* View */,
+				000CAE3C18B07329000A77AF /* Model */,
+				000CAE3818B0730B000A77AF /* Controller */,
+			);
+			name = "Gesture Recognition";
+			sourceTree = "<group>";
+		};
+		000CAE3818B0730B000A77AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				000CAE3418B06BC0000A77AF /* GestureRecognitionController.h */,
+				000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		000CAE3918B07317000A77AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				000CAE3018B06BAA000A77AF /* GestureSetupController.h */,
+				000CAE3118B06BAA000A77AF /* GestureSetupController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		000CAE3A18B0731E000A77AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		000CAE3B18B07324000A77AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				009609BD18B11D3000F8AD1E /* GestureSetupView.h */,
+				009609BE18B11D3000F8AD1E /* GestureSetupView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		000CAE3C18B07329000A77AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		000CAE3D18B0732D000A77AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				000CAE3E18B07356000A77AF /* GestureRecognitionView.h */,
+				000CAE3F18B07356000A77AF /* GestureRecognitionView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		009C9A3B18B03F5000CFF391 = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				009C9A5318B03F5000CFF391 /* Gestr.m */,
-				009C9A8218B0424A00CFF391 /* Gesture Recognition */,
+				000A68CA18B06100005340BA /* GestrController.h */,
+				000A68CB18B06100005340BA /* GestrController.m */,
+				000A68CF18B06B15005340BA /* Gesture Recognition */,
+				000A68CE18B06AFC005340BA /* Gesture Setup */,
+				009C9A8218B0424A00CFF391 /* Gesture Detection */,
 				009C9A4D18B03F5000CFF391 /* Package */,
 				009C9A5118B03F5000CFF391 /* Supporting Files */,
 			);
@@ -183,7 +277,7 @@
 			name = "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___VARIABLE_productName:RFC1034Identifier___";
 			sourceTree = "<group>";
 		};
-		009C9A8218B0424A00CFF391 /* Gesture Recognition */ = {
+		009C9A8218B0424A00CFF391 /* Gesture Detection */ = {
 			isa = PBXGroup;
 			children = (
 				009C9A8318B042B700CFF391 /* Gesture.h */,
@@ -201,7 +295,7 @@
 				009C9A8F18B042B700CFF391 /* GestureUtils.h */,
 				009C9A9018B042B700CFF391 /* GestureUtils.m */,
 			);
-			name = "Gesture Recognition";
+			name = "Gesture Detection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,13 +305,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000A68CC18B06100005340BA /* GestrController.h in Headers */,
+				000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */,
 				009C9A9B18B042B700CFF391 /* GestureTemplate.h in Headers */,
+				009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */,
 				009C9A9118B042B700CFF391 /* Gesture.h in Headers */,
 				009C9A9318B042B700CFF391 /* GesturePoint.h in Headers */,
 				009C9A9918B042B700CFF391 /* GestureStroke.h in Headers */,
 				009C9A9518B042B700CFF391 /* GestureRecognizer.h in Headers */,
 				009C9A9D18B042B700CFF391 /* GestureUtils.h in Headers */,
 				009C9A9718B042B700CFF391 /* GestureResult.h in Headers */,
+				000CAE3618B06BC0000A77AF /* GestureRecognitionController.h in Headers */,
+				000CAE3218B06BAA000A77AF /* GestureSetupController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,9 +387,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009609C018B11D3000F8AD1E /* GestureSetupView.m in Sources */,
+				000A68CD18B06100005340BA /* GestrController.m in Sources */,
+				000CAE3318B06BAA000A77AF /* GestureSetupController.m in Sources */,
 				009C9A9418B042B700CFF391 /* GesturePoint.m in Sources */,
 				009C9A9E18B042B700CFF391 /* GestureUtils.m in Sources */,
 				009C9A9818B042B700CFF391 /* GestureResult.m in Sources */,
+				000CAE3718B06BC0000A77AF /* GestureRecognitionController.m in Sources */,
+				000CAE4118B07356000A77AF /* GestureRecognitionView.m in Sources */,
 				009C9A9C18B042B700CFF391 /* GestureTemplate.m in Sources */,
 				009C9A9618B042B700CFF391 /* GestureRecognizer.m in Sources */,
 				009C9A9A18B042B700CFF391 /* GestureStroke.m in Sources */,
