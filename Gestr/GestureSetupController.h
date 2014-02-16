@@ -5,6 +5,7 @@
 @interface GestureSetupController : NSObject
 
 - (id)initWithController:(GestrController *)controller;
+- (void)setup;
 - (void)loadInterface;
 
 @end

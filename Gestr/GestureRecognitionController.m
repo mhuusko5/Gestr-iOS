@@ -3,6 +3,7 @@
 @interface GestureRecognitionController ()
 
 @property GestrController *gestrController;
+@property GestureRecognitionModel *recognitionModel;
 @property GestureRecognitionView *recognitionView;
 
 @end
@@ -21,9 +22,14 @@
 	[_gestrController deactivate];
 }
 
+- (void)setup {
+    _recognitionModel = [[GestureRecognitionModel alloc] init];
+    [_recognitionModel setup];
+}
+
 - (void)loadInterface {
 	CGRect recognitionRect = _gestrController.mainView.frame;
-	recognitionRect.size.height *= 0.85;
+	recognitionRect.size.height *= 0.92;
 	recognitionRect.origin = CGPointMake(0, _gestrController.mainView.frame.size.height - recognitionRect.size.height);
 
 	_recognitionView = [[GestureRecognitionView alloc] initWithFrame:recognitionRect andController:self];

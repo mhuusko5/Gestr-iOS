@@ -16,6 +16,8 @@
 		000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3E18B07356000A77AF /* GestureRecognitionView.h */; };
 		000CAE4118B07356000A77AF /* GestureRecognitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3F18B07356000A77AF /* GestureRecognitionView.m */; };
 		008214F818B1486600E5A483 /* Gestr-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 008214F718B1486600E5A483 /* Gestr-Prefix.pch */; };
+		008214FD18B15D0000E5A483 /* GestureRecognitionModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 008214FB18B15D0000E5A483 /* GestureRecognitionModel.h */; };
+		008214FE18B15D0000E5A483 /* GestureRecognitionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 008214FC18B15D0000E5A483 /* GestureRecognitionModel.m */; };
 		009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609BD18B11D3000F8AD1E /* GestureSetupView.h */; };
 		009609C018B11D3000F8AD1E /* GestureSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609BE18B11D3000F8AD1E /* GestureSetupView.m */; };
 		009609C318B1273300F8AD1E /* FXBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609C118B1273300F8AD1E /* FXBlurView.h */; };
@@ -52,6 +54,8 @@
 		000CAE3E18B07356000A77AF /* GestureRecognitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionView.h; sourceTree = "<group>"; };
 		000CAE3F18B07356000A77AF /* GestureRecognitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionView.m; sourceTree = "<group>"; };
 		008214F718B1486600E5A483 /* Gestr-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Gestr-Prefix.pch"; sourceTree = "<group>"; };
+		008214FB18B15D0000E5A483 /* GestureRecognitionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionModel.h; sourceTree = "<group>"; };
+		008214FC18B15D0000E5A483 /* GestureRecognitionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionModel.m; sourceTree = "<group>"; };
 		009609BD18B11D3000F8AD1E /* GestureSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureSetupView.h; sourceTree = "<group>"; };
 		009609BE18B11D3000F8AD1E /* GestureSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureSetupView.m; sourceTree = "<group>"; };
 		009609C118B1273300F8AD1E /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 		000CAE3C18B07329000A77AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				008214FB18B15D0000E5A483 /* GestureRecognitionModel.h */,
+				008214FC18B15D0000E5A483 /* GestureRecognitionModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				008214FD18B15D0000E5A483 /* GestureRecognitionModel.h in Headers */,
 				000A68CC18B06100005340BA /* GestrController.h in Headers */,
 				000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */,
 				009C9A9B18B042B700CFF391 /* GestureTemplate.h in Headers */,
@@ -410,6 +417,7 @@
 				000CAE3318B06BAA000A77AF /* GestureSetupController.m in Sources */,
 				009C9A9418B042B700CFF391 /* GesturePoint.m in Sources */,
 				009C9A9E18B042B700CFF391 /* GestureUtils.m in Sources */,
+				008214FE18B15D0000E5A483 /* GestureRecognitionModel.m in Sources */,
 				009C9A9818B042B700CFF391 /* GestureResult.m in Sources */,
 				000CAE3718B06BC0000A77AF /* GestureRecognitionController.m in Sources */,
 				000CAE4118B07356000A77AF /* GestureRecognitionView.m in Sources */,

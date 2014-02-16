@@ -9,6 +9,9 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 	_gestureSetupController = [[GestureSetupController alloc] initWithController:self];
 	_gestureRecognitionController = [[GestureRecognitionController alloc] initWithController:self];
 
+    [_gestureRecognitionController setup];
+    [_gestureSetupController setup];
+
 	return self;
 }
 

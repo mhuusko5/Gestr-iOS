@@ -56,7 +56,7 @@
 				}
 				else {
 					tempPath = [UIBezierPath bezierPath];
-					[tempPath setLineWidth:self.frame.size.width / 40];
+					[tempPath setLineWidth:self.frame.size.width / 36];
 					[tempPath setLineCapStyle:kCGLineCapRound];
 					[tempPath setLineJoinStyle:kCGLineJoinRound];
 					[tempPath moveToPoint:drawPoint];
@@ -92,7 +92,7 @@
 - (void)startDetectingGesture {
     [self resetAll];
 
-	_noInputTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(finishDetectingGestureIgnore) userInfo:nil repeats:NO];
+	_noInputTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(finishDetectingGestureIgnore) userInfo:nil repeats:NO];
 
     self.multipleTouchEnabled = YES;
 
