@@ -23,12 +23,12 @@
 	setupRect.origin = CGPointMake(0, 0);
 
 	_setupView = [[GestureSetupView alloc] initWithFrame:setupRect andController:self];
-    _setupView.backgroundColor = [UIColor clearColor];
+	_setupView.backgroundColor = [UIColor clearColor];
 
-    int dividerHeight = (int)(2.0 / [UIScreen mainScreen].scale);
-    UIView *whiteDivider = [[UIView alloc] initWithFrame:CGRectMake(0, setupRect.size.height - dividerHeight, setupRect.size.width, dividerHeight)];
-    whiteDivider.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
-    [_setupView addSubview:whiteDivider];
+	int dividerHeight = (int)(2.0 / [UIScreen mainScreen].scale);
+	UIView *whiteDivider = [[UIView alloc] initWithFrame:CGRectMake(0, setupRect.size.height - dividerHeight, setupRect.size.width, dividerHeight)];
+	whiteDivider.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
+	[_setupView addSubview:whiteDivider];
 
 	[_gestrController.mainView addSubview:_setupView];
 }

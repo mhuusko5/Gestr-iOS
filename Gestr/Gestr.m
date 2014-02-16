@@ -1,5 +1,3 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <libactivator/libactivator.h>
 #import "GestrController.h"
 
@@ -43,7 +41,7 @@
 }
 
 static void deviceSleep(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-	[(Gestr *)observer activatorDismiss];
+	[(__bridge Gestr *)observer activatorDismiss];
 }
 
 - (id)init {
@@ -51,7 +49,7 @@ static void deviceSleep(CFNotificationCenterRef center, void *observer, CFString
 
 	gestrController = [[GestrController alloc] init];
 
-	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), self, deviceSleep, CFSTR("com.apple.springboard.hasBlankedScreen"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), deviceSleep, CFSTR("com.apple.springboard.hasBlankedScreen"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
 	return self;
 }

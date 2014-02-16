@@ -3,9 +3,8 @@
 @interface GesturePoint : NSObject <NSCopying, NSCoding>
 
 @property float x, y;
-@property int strokeId;
 
-- (id)initWithX:(float)x andY:(float)y andStrokeId:(int)strokeId;
+- (id)initWithX:(float)x andY:(float)y;
 - (void)encodeWithCoder:(NSCoder *)coder;
 - (id)initWithCoder:(NSCoder *)coder;
 - (id)copyWithZone:(NSZone *)zone;

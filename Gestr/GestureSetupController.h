@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 #import "GestrController.h"
 #import "GestureSetupView.h"
 @class GestrController;

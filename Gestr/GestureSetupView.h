@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 #import "GestureSetupController.h"
 @class GestureSetupController;
 

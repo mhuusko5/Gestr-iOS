@@ -1,5 +1,4 @@
 #import "GestureUtils.h"
-#define CGFLOAT_MAX FLT_MAX
 
 float GUDistanceAtBestAngle(GestureStroke *inputPoints, GestureStroke *matchPoints) {
 	float minAngleRange = GUDegreesToRadians(-GUGoldenRatioAngleLeniency);
@@ -98,7 +97,7 @@ GestureStroke *GURotateBy(GestureStroke *points, float radians) {
 		float rotatedX = (point.x - centroid.x) * cosValue - (point.y - centroid.y) * sinValue + centroid.x;
 		float rotatedY = (point.x - centroid.x) * sinValue + (point.y - centroid.y) * cosValue + centroid.y;
 
-		[rotatedPoints addPoint:[[GesturePoint alloc] initWithX:rotatedX andY:rotatedY andStrokeId:point.strokeId]];
+		[rotatedPoints addPoint:[[GesturePoint alloc] initWithX:rotatedX andY:rotatedY]];
 	}
 
 	return rotatedPoints;
@@ -121,7 +120,7 @@ GestureStroke *GUResample(GestureStroke *points) {
 			float x = point1.x + ((newPointDistance - initialDistance) / d) * (point2.x - point1.x);
 			float y = point1.y + ((newPointDistance - initialDistance) / d) * (point2.y - point1.y);
 
-			GesturePoint *newPoint = [[GesturePoint alloc] initWithX:x andY:y andStrokeId:point1.strokeId];
+			GesturePoint *newPoint = [[GesturePoint alloc] initWithX:x andY:y];
 			[newPoints addPoint:newPoint];
 
 			[currentPoints insertPoint:newPoint atIndex:i];
@@ -162,7 +161,7 @@ GestureStroke *GUScale(GestureStroke *points) {
 			scaledY = point.y * (GUBoundingBoxSize / currentBox.size.height);
 		}
 
-		[scaled addPoint:[[GesturePoint alloc] initWithX:scaledX andY:scaledY andStrokeId:point.strokeId]];
+		[scaled addPoint:[[GesturePoint alloc] initWithX:scaledX andY:scaledY]];
 	}
 
 	return scaled;
@@ -176,7 +175,7 @@ GestureStroke *GUTranslateToOrigin(GestureStroke *points) {
 		GesturePoint *point = [points pointAtIndex:i];
 		float translatedX = point.x - centroid.x;
 		float translatedY = point.y - centroid.y;
-		[translated addPoint:[[GesturePoint alloc] initWithX:translatedX andY:translatedY andStrokeId:point.strokeId]];
+		[translated addPoint:[[GesturePoint alloc] initWithX:translatedX andY:translatedY]];
 	}
 
 	return translated;
@@ -205,17 +204,17 @@ GesturePoint *GUCalcStartUnitVector(GestureStroke *points) {
 	GesturePoint *pointAtIndex = [points pointAtIndex:endPointIndex];
 	GesturePoint *firstPoint = [points pointAtIndex:GUStartVectorDelay];
 
-	GesturePoint *unitVector = [[GesturePoint alloc] initWithX:pointAtIndex.x - firstPoint.x andY:pointAtIndex.y - firstPoint.y andStrokeId:0];
+	GesturePoint *unitVector = [[GesturePoint alloc] initWithX:pointAtIndex.x - firstPoint.x andY:pointAtIndex.y - firstPoint.y];
 	float magnitude = sqrtf(unitVector.x * unitVector.x + unitVector.y * unitVector.y);
 
-	return [[GesturePoint alloc] initWithX:unitVector.x / magnitude andY:unitVector.y / magnitude andStrokeId:0];
+	return [[GesturePoint alloc] initWithX:unitVector.x / magnitude andY:unitVector.y / magnitude];
 }
 
 CGRect GUBoundingBox(GestureStroke *points) {
-	float minX = FLT_MAX;
-	float maxX = -FLT_MAX;
-	float minY = FLT_MAX;
-	float maxY = -FLT_MAX;
+	float minX = CGFLOAT_MAX;
+	float maxX = -CGFLOAT_MAX;
+	float minY = CGFLOAT_MAX;
+	float maxY = -CGFLOAT_MAX;
 
 	for (GesturePoint *point in points.points) {
 		if (point.x < minX) {
@@ -285,5 +284,5 @@ GesturePoint *GUCentroid(GestureStroke *points) {
 	x /= points.pointCount;
 	y /= points.pointCount;
 
-	return [[GesturePoint alloc] initWithX:x andY:y andStrokeId:0];
+	return [[GesturePoint alloc] initWithX:x andY:y];
 }

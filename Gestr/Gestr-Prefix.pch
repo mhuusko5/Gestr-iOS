@@ -1,0 +1,6 @@
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
+
+#define myGreenColor [UIColor colorWithRed : (49.0f / 255.0f)green : (212.0f / 255.0f)blue : (74.0f / 255.0f)alpha : 1.0]

@@ -1,7 +1,6 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "GestureSetupController.h"
 #import "GestureRecognitionController.h"
+#import "FXBlurView.h"
 @class GestureSetupController, GestureRecognitionController;
 
 @interface GestrController : NSObject

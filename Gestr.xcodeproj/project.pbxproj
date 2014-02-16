@@ -8,33 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		000A68CC18B06100005340BA /* GestrController.h in Headers */ = {isa = PBXBuildFile; fileRef = 000A68CA18B06100005340BA /* GestrController.h */; };
-		000A68CD18B06100005340BA /* GestrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A68CB18B06100005340BA /* GestrController.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		000A68CD18B06100005340BA /* GestrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A68CB18B06100005340BA /* GestrController.m */; };
 		000CAE3218B06BAA000A77AF /* GestureSetupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3018B06BAA000A77AF /* GestureSetupController.h */; };
-		000CAE3318B06BAA000A77AF /* GestureSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3118B06BAA000A77AF /* GestureSetupController.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		000CAE3318B06BAA000A77AF /* GestureSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3118B06BAA000A77AF /* GestureSetupController.m */; };
 		000CAE3618B06BC0000A77AF /* GestureRecognitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3418B06BC0000A77AF /* GestureRecognitionController.h */; };
-		000CAE3718B06BC0000A77AF /* GestureRecognitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		000CAE3718B06BC0000A77AF /* GestureRecognitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */; };
 		000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 000CAE3E18B07356000A77AF /* GestureRecognitionView.h */; };
 		000CAE4118B07356000A77AF /* GestureRecognitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CAE3F18B07356000A77AF /* GestureRecognitionView.m */; };
+		008214F818B1486600E5A483 /* Gestr-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 008214F718B1486600E5A483 /* Gestr-Prefix.pch */; };
 		009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609BD18B11D3000F8AD1E /* GestureSetupView.h */; };
 		009609C018B11D3000F8AD1E /* GestureSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609BE18B11D3000F8AD1E /* GestureSetupView.m */; };
+		009609C318B1273300F8AD1E /* FXBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609C118B1273300F8AD1E /* FXBlurView.h */; };
+		009609C418B1273300F8AD1E /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609C218B1273300F8AD1E /* FXBlurView.m */; };
+		009609C718B13C7000F8AD1E /* UITouch+UniqueID.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609C518B13C7000F8AD1E /* UITouch+UniqueID.h */; };
+		009609C818B13C7000F8AD1E /* UITouch+UniqueID.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609C618B13C7000F8AD1E /* UITouch+UniqueID.m */; };
 		009C9A4918B03F5000CFF391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009C9A4818B03F5000CFF391 /* Foundation.framework */; };
 		009C9A4B18B03F5000CFF391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009C9A4A18B03F5000CFF391 /* UIKit.framework */; };
-		009C9A5418B03F5000CFF391 /* Gestr.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A5318B03F5000CFF391 /* Gestr.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A5418B03F5000CFF391 /* Gestr.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A5318B03F5000CFF391 /* Gestr.m */; };
 		009C9A6518B03F9300CFF391 /* libactivator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 009C9A6418B03F9300CFF391 /* libactivator.dylib */; };
 		009C9A9118B042B700CFF391 /* Gesture.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8318B042B700CFF391 /* Gesture.h */; };
-		009C9A9218B042B700CFF391 /* Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8418B042B700CFF391 /* Gesture.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9218B042B700CFF391 /* Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8418B042B700CFF391 /* Gesture.m */; };
 		009C9A9318B042B700CFF391 /* GesturePoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8518B042B700CFF391 /* GesturePoint.h */; };
-		009C9A9418B042B700CFF391 /* GesturePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8618B042B700CFF391 /* GesturePoint.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9418B042B700CFF391 /* GesturePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8618B042B700CFF391 /* GesturePoint.m */; };
 		009C9A9518B042B700CFF391 /* GestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8718B042B700CFF391 /* GestureRecognizer.h */; };
-		009C9A9618B042B700CFF391 /* GestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8818B042B700CFF391 /* GestureRecognizer.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9618B042B700CFF391 /* GestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8818B042B700CFF391 /* GestureRecognizer.m */; };
 		009C9A9718B042B700CFF391 /* GestureResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8918B042B700CFF391 /* GestureResult.h */; };
-		009C9A9818B042B700CFF391 /* GestureResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8A18B042B700CFF391 /* GestureResult.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9818B042B700CFF391 /* GestureResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8A18B042B700CFF391 /* GestureResult.m */; };
 		009C9A9918B042B700CFF391 /* GestureStroke.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8B18B042B700CFF391 /* GestureStroke.h */; };
-		009C9A9A18B042B700CFF391 /* GestureStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8C18B042B700CFF391 /* GestureStroke.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9A18B042B700CFF391 /* GestureStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8C18B042B700CFF391 /* GestureStroke.m */; };
 		009C9A9B18B042B700CFF391 /* GestureTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8D18B042B700CFF391 /* GestureTemplate.h */; };
-		009C9A9C18B042B700CFF391 /* GestureTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8E18B042B700CFF391 /* GestureTemplate.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9C18B042B700CFF391 /* GestureTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A8E18B042B700CFF391 /* GestureTemplate.m */; };
 		009C9A9D18B042B700CFF391 /* GestureUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 009C9A8F18B042B700CFF391 /* GestureUtils.h */; };
-		009C9A9E18B042B700CFF391 /* GestureUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A9018B042B700CFF391 /* GestureUtils.m */; settings = {COMPILER_FLAGS = "-f-objc-arc"; }; };
+		009C9A9E18B042B700CFF391 /* GestureUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9A9018B042B700CFF391 /* GestureUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +51,13 @@
 		000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionController.m; sourceTree = "<group>"; };
 		000CAE3E18B07356000A77AF /* GestureRecognitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionView.h; sourceTree = "<group>"; };
 		000CAE3F18B07356000A77AF /* GestureRecognitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionView.m; sourceTree = "<group>"; };
+		008214F718B1486600E5A483 /* Gestr-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Gestr-Prefix.pch"; sourceTree = "<group>"; };
 		009609BD18B11D3000F8AD1E /* GestureSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureSetupView.h; sourceTree = "<group>"; };
 		009609BE18B11D3000F8AD1E /* GestureSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureSetupView.m; sourceTree = "<group>"; };
+		009609C118B1273300F8AD1E /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		009609C218B1273300F8AD1E /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		009609C518B13C7000F8AD1E /* UITouch+UniqueID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+UniqueID.h"; sourceTree = "<group>"; };
+		009609C618B13C7000F8AD1E /* UITouch+UniqueID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+UniqueID.m"; sourceTree = "<group>"; };
 		009C9A4518B03F5000CFF391 /* Gestr.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Gestr.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		009C9A4818B03F5000CFF391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		009C9A4A18B03F5000CFF391 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -221,6 +231,11 @@
 		009C9A5118B03F5000CFF391 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				008214F718B1486600E5A483 /* Gestr-Prefix.pch */,
+				009609C518B13C7000F8AD1E /* UITouch+UniqueID.h */,
+				009609C618B13C7000F8AD1E /* UITouch+UniqueID.m */,
+				009609C118B1273300F8AD1E /* FXBlurView.h */,
+				009609C218B1273300F8AD1E /* FXBlurView.m */,
 				009C9A5218B03F5000CFF391 /* PackageVersion.plist */,
 			);
 			name = "Supporting Files";
@@ -309,13 +324,16 @@
 				000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */,
 				009C9A9B18B042B700CFF391 /* GestureTemplate.h in Headers */,
 				009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */,
+				008214F818B1486600E5A483 /* Gestr-Prefix.pch in Headers */,
 				009C9A9118B042B700CFF391 /* Gesture.h in Headers */,
 				009C9A9318B042B700CFF391 /* GesturePoint.h in Headers */,
+				009609C318B1273300F8AD1E /* FXBlurView.h in Headers */,
 				009C9A9918B042B700CFF391 /* GestureStroke.h in Headers */,
 				009C9A9518B042B700CFF391 /* GestureRecognizer.h in Headers */,
 				009C9A9D18B042B700CFF391 /* GestureUtils.h in Headers */,
 				009C9A9718B042B700CFF391 /* GestureResult.h in Headers */,
 				000CAE3618B06BC0000A77AF /* GestureRecognitionController.h in Headers */,
+				009609C718B13C7000F8AD1E /* UITouch+UniqueID.h in Headers */,
 				000CAE3218B06BAA000A77AF /* GestureSetupController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +414,8 @@
 				000CAE3718B06BC0000A77AF /* GestureRecognitionController.m in Sources */,
 				000CAE4118B07356000A77AF /* GestureRecognitionView.m in Sources */,
 				009C9A9C18B042B700CFF391 /* GestureTemplate.m in Sources */,
+				009609C418B1273300F8AD1E /* FXBlurView.m in Sources */,
+				009609C818B13C7000F8AD1E /* UITouch+UniqueID.m in Sources */,
 				009C9A9618B042B700CFF391 /* GestureRecognizer.m in Sources */,
 				009C9A9A18B042B700CFF391 /* GestureStroke.m in Sources */,
 				009C9A5418B03F5000CFF391 /* Gestr.m in Sources */,
@@ -411,6 +431,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -419,7 +440,8 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREFIX_HEADER = "Gestr/Gestr-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -444,6 +466,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -451,6 +474,8 @@
 					"$(SDKROOT)/System/Library/PrivateFrameworks",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREFIX_HEADER = "Gestr/Gestr-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -470,6 +495,7 @@
 				CODE_SIGN_IDENTITY = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREFIX_HEADER = "Gestr/Gestr-Prefix.pch";
 				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,6 +518,7 @@
 				CODE_SIGN_IDENTITY = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_PREFIX_HEADER = "Gestr/Gestr-Prefix.pch";
 				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
