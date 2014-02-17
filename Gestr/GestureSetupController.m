@@ -64,11 +64,15 @@
 - (void)assignGesture:(id)sender {
 	[_assignButton removeTarget:self action:@selector(assignGesture:) forControlEvents:UIControlEventTouchUpInside];
 
+    [_assignButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
+
 	[_gestrController.gestureRecognitionController switchToAssignment];
 }
 
 - (void)clearGesture:(id)sender {
 	[_clearButton removeTarget:self action:@selector(clearGesture:) forControlEvents:UIControlEventTouchUpInside];
+
+    [_clearButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
 
 	NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
 
