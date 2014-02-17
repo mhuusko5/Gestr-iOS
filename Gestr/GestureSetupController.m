@@ -19,7 +19,7 @@
 }
 
 - (void)setup {
-    //ANY POST INIT SETUP CODE
+	//ANY POST INIT SETUP CODE
 }
 
 - (void)loadInterface {
@@ -42,13 +42,13 @@
 
 	_clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	_clearButton.frame = CGRectMake(0, 0, setupRect.size.width / 2, setupRect.size.height);
-    _clearButton.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:_setupView.frame.size.width / 16];
+	_clearButton.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:_setupView.frame.size.width / 16];
 	_clearButton.titleLabel.textAlignment = UITextAlignmentCenter;
 	[_setupView addSubview:_clearButton];
 
 	_assignButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	_assignButton.frame = CGRectMake(setupRect.size.width / 2, 0, setupRect.size.width / 2, setupRect.size.height);
-    _assignButton.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:_setupView.frame.size.width / 16];
+	_assignButton.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:_setupView.frame.size.width / 16];
 	_assignButton.titleLabel.textAlignment = UITextAlignmentCenter;
 	[_setupView addSubview:_assignButton];
 
@@ -58,26 +58,26 @@
 }
 
 + (NSString *)CurrentAppBundleId {
-    return [[[UIApplication sharedApplication] performSelector:NSSelectorFromString(@"_accessibilityFrontMostApplication")] performSelector:NSSelectorFromString(@"displayIdentifier")];
+	return [[[UIApplication sharedApplication] performSelector:NSSelectorFromString(@"_accessibilityFrontMostApplication")] performSelector:NSSelectorFromString(@"displayIdentifier")];
 }
 
 - (void)assignGesture:(id)sender {
-    [_assignButton removeTarget:self action:@selector(assignGesture:) forControlEvents:UIControlEventTouchUpInside];
+	[_assignButton removeTarget:self action:@selector(assignGesture:) forControlEvents:UIControlEventTouchUpInside];
 
-    [_gestrController.gestureRecognitionController switchToAssignment];
+	[_gestrController.gestureRecognitionController switchToAssignment];
 }
 
 - (void)clearGesture:(id)sender {
-    [_clearButton removeTarget:self action:@selector(clearGesture:) forControlEvents:UIControlEventTouchUpInside];
+	[_clearButton removeTarget:self action:@selector(clearGesture:) forControlEvents:UIControlEventTouchUpInside];
 
-    NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
+	NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
 
-    [_gestrController.gestureRecognitionController.recognitionModel deleteGestureWithIdentity:currentBundleId];
+	[_gestrController.gestureRecognitionController.recognitionModel deleteGestureWithIdentity:currentBundleId];
 
-    [_gestrController deactivate];
+	[_gestrController deactivate];
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"Cleared gesture of current app!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"Cleared gesture of current app!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
 }
 
 - (void)configureSetup {
@@ -89,23 +89,25 @@
 
 	NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
 
-    BOOL gestureExists = [_gestrController.gestureRecognitionController.recognitionModel getGestureWithIdentity:currentBundleId];
+	BOOL gestureExists = [_gestrController.gestureRecognitionController.recognitionModel getGestureWithIdentity:currentBundleId];
 
-    if (currentBundleId && gestureExists) {
-        [_clearButton addTarget:self action:@selector(clearGesture:) forControlEvents:UIControlEventTouchUpInside];
-    } else {
-        [_clearButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
-    }
+	if (currentBundleId && gestureExists) {
+		[_clearButton addTarget:self action:@selector(clearGesture:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	else {
+		[_clearButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
+	}
 
-    if (currentBundleId) {
-        if (gestureExists) {
-            [_assignButton setTitle:@"Reassign" forState:UIControlStateNormal];
-        }
+	if (currentBundleId) {
+		if (gestureExists) {
+			[_assignButton setTitle:@"Reassign" forState:UIControlStateNormal];
+		}
 
-        [_assignButton addTarget:self action:@selector(assignGesture:) forControlEvents:UIControlEventTouchUpInside];
-    } else {
-        [_assignButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
-    }
+		[_assignButton addTarget:self action:@selector(assignGesture:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	else {
+		[_assignButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
+	}
 }
 
 @end

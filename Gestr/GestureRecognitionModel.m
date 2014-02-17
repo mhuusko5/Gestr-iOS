@@ -40,10 +40,10 @@
 - (BOOL)fetchGestureDictionary {
 	NSMutableDictionary *gestures;
 	@try {
-        NSDictionary *storage = [NSDictionary dictionaryWithContentsOfFile:StoragePath];
+		NSDictionary *storage = [NSDictionary dictionaryWithContentsOfFile:StoragePath];
 		NSData *gestureData;
 		if ((gestureData = [storage objectForKey:@"Gestures"])) {
-			gestures = [((NSDictionary *)[NSKeyedUnarchiver unarchiveObjectWithData:gestureData]) mutableCopy];
+			gestures = [((NSDictionary *)[NSKeyedUnarchiver unarchiveObjectWithData:gestureData])mutableCopy];
 		}
 		else {
 			gestures = [NSMutableDictionary dictionary];
@@ -58,10 +58,10 @@
 }
 
 - (void)saveGestureDictionary {
-    NSMutableDictionary *storage = [NSMutableDictionary dictionaryWithContentsOfFile:StoragePath];
-    if (!storage) {
-        storage = [NSMutableDictionary dictionary];
-    }
+	NSMutableDictionary *storage = [NSMutableDictionary dictionaryWithContentsOfFile:StoragePath];
+	if (!storage) {
+		storage = [NSMutableDictionary dictionary];
+	}
 	[storage setObject:[NSKeyedArchiver archivedDataWithRootObject:_gestureDictionary] forKey:@"Gestures"];
 	[storage writeToFile:StoragePath atomically:YES];
 }
@@ -79,10 +79,11 @@
 
 		[_gestureDetector addGesture:gestureToSave];
 
-        return YES;
-	} else {
-        return NO;
-    }
+		return YES;
+	}
+	else {
+		return NO;
+	}
 }
 
 - (Gesture *)getGestureWithIdentity:(NSString *)identity {

@@ -17,10 +17,10 @@
 
 - (void)handleTouches:(NSSet *)touches type:(NSString *)type {
 	if (_detectingInput) {
-        if (_alertLabel) {
-            [_alertLabel removeFromSuperview];
-            _alertLabel = nil;
-        }
+		if (_alertLabel) {
+			[_alertLabel removeFromSuperview];
+			_alertLabel = nil;
+		}
 
 		[self resetInputTimers];
 
@@ -39,7 +39,8 @@
 					if (_orderedStrokeIds.count < 3) {
 						[_orderedStrokeIds addObject:identity];
 						_gestureStrokes[identity] = [[GestureStroke alloc] init];
-					} else {
+					}
+					else {
 						continue;
 					}
 				}
@@ -88,14 +89,14 @@
 }
 
 - (void)startDetectingGestureWithTarget:(id)target andCallback:(SEL)callback {
-    [self resetAll];
+	[self resetAll];
 
 	_noInputTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(finishDetectingGestureIgnore) userInfo:nil repeats:NO];
 
-    self.multipleTouchEnabled = YES;
+	self.multipleTouchEnabled = YES;
 
-    _callbackTarget = target;
-    _callbackSelector = callback;
+	_callbackTarget = target;
+	_callbackSelector = callback;
 
 	_detectingInput = YES;
 }
@@ -111,9 +112,9 @@
 - (void)finishDetectingGesture:(BOOL)ignore {
 	_detectingInput = NO;
 
-    self.multipleTouchEnabled = NO;
+	self.multipleTouchEnabled = NO;
 
-    NSMutableArray *orderedStrokes = [NSMutableArray array];
+	NSMutableArray *orderedStrokes = [NSMutableArray array];
 	if (!ignore) {
 		for (int i = 0; i < _orderedStrokeIds.count; i++) {
 			[orderedStrokes addObject:_gestureStrokes[_orderedStrokeIds[i]]];
@@ -122,7 +123,7 @@
 
 	[self resetAll];
 
-    [_callbackTarget performSelector:_callbackSelector withObject:orderedStrokes];
+	[_callbackTarget performSelector:_callbackSelector withObject:orderedStrokes];
 }
 
 - (void)resetInputTimers {
@@ -140,9 +141,9 @@
 - (void)resetAll {
 	[self resetInputTimers];
 
-    _detectingInput = NO;
+	_detectingInput = NO;
 
-    self.multipleTouchEnabled = NO;
+	self.multipleTouchEnabled = NO;
 
 	_gestureStrokes = [NSMutableDictionary dictionary];
 	_orderedStrokeIds = [NSMutableArray array];
@@ -154,7 +155,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    if (_detectingInput) {
+	if (_detectingInput) {
 		for (UIBezierPath *path in[_touchPaths allValues]) {
 			[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.36] setStroke];
 			path.lineWidth *= 1.5;

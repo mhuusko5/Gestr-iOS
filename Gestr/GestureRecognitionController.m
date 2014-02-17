@@ -3,7 +3,7 @@
 @interface SBApplication : NSObject @end
 
 @interface UIApplication (Gestr)
-    - (void)launchApplicationWithIdentifier:(NSString *)identifier suspended:(BOOL)suspended;
+- (void)launchApplicationWithIdentifier:(NSString *)identifier suspended:(BOOL)suspended;
 @end
 
 @interface GestureRecognitionController ()
@@ -29,16 +29,17 @@
 	if (result && (rating = result.score) >= 79) {
 		NSString *bundleIdToLaunch = result.gestureIdentity;
 
-        SBApplication *appToLaunch =[[NSClassFromString(@"SBApplicationController") performSelector:NSSelectorFromString(@"sharedInstance")] performSelector:NSSelectorFromString(@"applicationWithDisplayIdentifier:") withObject:bundleIdToLaunch];
+		SBApplication *appToLaunch = [[NSClassFromString(@"SBApplicationController") performSelector:NSSelectorFromString(@"sharedInstance")] performSelector:NSSelectorFromString(@"applicationWithDisplayIdentifier:") withObject:bundleIdToLaunch];
 
-        if (appToLaunch) {
-            [[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdToLaunch suspended:NO];
-        } else {
-            [_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
+		if (appToLaunch) {
+			[[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdToLaunch suspended:NO];
+		}
+		else {
+			[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
 
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"App for gesture no longer installed... gesture cleared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"App for gesture no longer installed... gesture cleared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			[alert show];
+		}
 	}
 
 	[_gestrController deactivate];
@@ -47,17 +48,18 @@
 - (void)saveGestureWithStrokes:(NSMutableArray *)strokes {
 	NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
 
-    NSString *alertString;
-    if ([_recognitionModel saveGestureWithStrokes:strokes andIdentity:currentBundleId]) {
-        alertString = @"Saved gesture for current app!";
-    } else {
-        alertString = @"Not enough input to create a gesture...";
-    }
+	NSString *alertString;
+	if ([_recognitionModel saveGestureWithStrokes:strokes andIdentity:currentBundleId]) {
+		alertString = @"Saved gesture for current app!";
+	}
+	else {
+		alertString = @"Not enough input to create a gesture...";
+	}
 
 	[_gestrController deactivate];
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
 }
 
 - (void)setup {

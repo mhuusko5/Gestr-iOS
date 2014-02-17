@@ -4,11 +4,12 @@
 <dict>
 	<key>compatible-modes</key>
 	<array>
+		<string>lockscreen</string>
 		<string>springboard</string>
 		<string>application</string>
 	</array>
 	<key>description</key>
-	<string>Launch apps with gestures you define!</string>
+	<string>Launch apps with multitouch gestures you define!</string>
 	<key>title</key>
 	<string>Gestr</string>
 </dict>

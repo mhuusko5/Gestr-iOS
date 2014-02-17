@@ -9,17 +9,17 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 	_gestureSetupController = [[GestureSetupController alloc] initWithController:self];
 	_gestureRecognitionController = [[GestureRecognitionController alloc] initWithController:self];
 
-    [_gestureRecognitionController setup];
-    [_gestureSetupController setup];
+	[_gestureRecognitionController setup];
+	[_gestureSetupController setup];
 
 	return self;
 }
 
 - (void)deactivate {
-    [_gestureRecognitionController.recognitionView resetAll];
+	[_gestureRecognitionController.recognitionView resetAll];
 
 	_mainWindow.hidden = YES;
-    _mainWindow = nil;
+	_mainWindow = nil;
 
 	_activated = NO;
 }
@@ -28,9 +28,9 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 	_activated = YES;
 
 	_mainWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _mainWindow.rootViewController = self;
+	_mainWindow.rootViewController = self;
 	_mainWindow.windowLevel = UIWindowLevelAlert;
-    _mainWindow.exclusiveTouch = YES;
+	_mainWindow.exclusiveTouch = YES;
 	[_mainWindow makeKeyAndVisible];
 
 	UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:_UICreateScreenUIImage()];
@@ -51,7 +51,7 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 	[_gestureSetupController loadInterface];
 	[_gestureRecognitionController loadInterface];
 
-    [_mainWindow addSubview:_mainView];
+	[_mainWindow addSubview:_mainView];
 }
 
 @end
