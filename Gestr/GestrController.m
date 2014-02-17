@@ -16,12 +16,10 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 }
 
 - (void)deactivate {
-	[UIView animateWithDuration:0.1 animations: ^() {
-	    _mainWindow.alpha = 0;
-	} completion: ^(BOOL finished) {
-	    _mainWindow.hidden = YES;
-	    _mainWindow = nil;
-	}];
+    [_gestureRecognitionController.recognitionView resetAll];
+
+	_mainWindow.hidden = YES;
+    _mainWindow = nil;
 
 	_activated = NO;
 }
@@ -30,8 +28,9 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 	_activated = YES;
 
 	_mainWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _mainWindow.rootViewController = self;
 	_mainWindow.windowLevel = UIWindowLevelAlert;
-	_mainWindow.alpha = 0;
+    _mainWindow.exclusiveTouch = YES;
 	[_mainWindow makeKeyAndVisible];
 
 	UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:_UICreateScreenUIImage()];
@@ -48,14 +47,11 @@ OBJC_EXTERN UIImage *_UICreateScreenUIImage(void) NS_RETURNS_RETAINED;
 
 	_mainView = [[UIView alloc] initWithFrame:_mainWindow.frame];
 	_mainView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
-	[_mainWindow addSubview:_mainView];
 
 	[_gestureSetupController loadInterface];
 	[_gestureRecognitionController loadInterface];
 
-	[UIView animateWithDuration:0.1 animations: ^() {
-	    _mainWindow.alpha = 1;
-	}];
+    [_mainWindow addSubview:_mainView];
 }
 
 @end

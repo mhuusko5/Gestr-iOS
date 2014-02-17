@@ -2,32 +2,30 @@
 
 @interface GestureRecognitionView ()
 
-@property GestureRecognitionController *recognitionController;
 @property NSMutableDictionary *touchPaths;
 @property NSMutableDictionary *gestureStrokes;
 @property NSMutableArray *orderedStrokeIds;
 @property NSDate *lastMultitouchRedraw;
 @property NSTimer *noInputTimer;
 @property NSTimer *detectInputTimer;
+@property id callbackTarget;
+@property SEL callbackSelector;
 
 @end
 
 @implementation GestureRecognitionView
 
-- (id)initWithFrame:(CGRect)frame andController:(GestureRecognitionController *)controller {
-	self = [super initWithFrame:frame];
-
-	_recognitionController = controller;
-
-	return self;
-}
-
 - (void)handleTouches:(NSSet *)touches type:(NSString *)type {
 	if (_detectingInput) {
+        if (_alertLabel) {
+            [_alertLabel removeFromSuperview];
+            _alertLabel = nil;
+        }
+
 		[self resetInputTimers];
 
 		if (!_detectInputTimer && [type isEqualToString:@"End"]) {
-			_detectInputTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(finishDetectingGesture) userInfo:nil repeats:NO];
+			_detectInputTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(finishDetectingGesture) userInfo:nil repeats:NO];
 		}
 		else {
 			BOOL shouldDraw = ([_lastMultitouchRedraw timeIntervalSinceNow] * -1000.0 > 10);
@@ -89,22 +87,25 @@
 	[self handleTouches:touches type:@"End"];
 }
 
-- (void)startDetectingGesture {
+- (void)startDetectingGestureWithTarget:(id)target andCallback:(SEL)callback {
     [self resetAll];
 
 	_noInputTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(finishDetectingGestureIgnore) userInfo:nil repeats:NO];
 
     self.multipleTouchEnabled = YES;
 
+    _callbackTarget = target;
+    _callbackSelector = callback;
+
 	_detectingInput = YES;
 }
 
 - (void)finishDetectingGesture {
-	[self finishDetectingGesture:YES];
+	[self finishDetectingGesture:NO];
 }
 
 - (void)finishDetectingGestureIgnore {
-	[self finishDetectingGesture:NO];
+	[self finishDetectingGesture:YES];
 }
 
 - (void)finishDetectingGesture:(BOOL)ignore {
@@ -112,9 +113,16 @@
 
     self.multipleTouchEnabled = NO;
 
+    NSMutableArray *orderedStrokes = [NSMutableArray array];
+	if (!ignore) {
+		for (int i = 0; i < _orderedStrokeIds.count; i++) {
+			[orderedStrokes addObject:_gestureStrokes[_orderedStrokeIds[i]]];
+		}
+	}
+
 	[self resetAll];
 
-	[_recognitionController recognizeGestureWithStrokes:nil];
+    [_callbackTarget performSelector:_callbackSelector withObject:orderedStrokes];
 }
 
 - (void)resetInputTimers {
@@ -131,6 +139,10 @@
 
 - (void)resetAll {
 	[self resetInputTimers];
+
+    _detectingInput = NO;
+
+    self.multipleTouchEnabled = NO;
 
 	_gestureStrokes = [NSMutableDictionary dictionary];
 	_orderedStrokeIds = [NSMutableArray array];

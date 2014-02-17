@@ -1,15 +1,17 @@
-#import "GestureRecognitionController.h"
+#import "GestureRecognizer.h"
 #import "UITouch+UniqueID.h"
-@class GestureRecognitionController;
 
 @interface GestureRecognitionView : UIView
 
 @property BOOL detectingInput;
+@property UILabel *alertLabel;
 
-- (id)initWithFrame:(CGRect)frame andController:(GestureRecognitionController *)controller;
-- (void)startDetectingGesture;
+- (void)handleTouches:(NSSet *)touches type:(NSString *)type;
+- (void)startDetectingGestureWithTarget:(id)target andCallback:(SEL)callback;
 - (void)finishDetectingGesture;
 - (void)finishDetectingGestureIgnore;
 - (void)finishDetectingGesture:(BOOL)ignore;
+- (void)resetInputTimers;
+- (void)resetAll;
 
 @end

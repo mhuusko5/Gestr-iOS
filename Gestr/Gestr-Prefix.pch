@@ -3,4 +3,6 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#define StoragePath @"/var/mobile/Library/Preferences/com.mhuusko5.Gestr.plist"
+
 #define myGreenColor [UIColor colorWithRed : (49.0f / 255.0f)green : (212.0f / 255.0f)blue : (74.0f / 255.0f)alpha : 1.0]

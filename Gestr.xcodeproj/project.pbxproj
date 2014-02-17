@@ -18,8 +18,6 @@
 		008214F818B1486600E5A483 /* Gestr-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 008214F718B1486600E5A483 /* Gestr-Prefix.pch */; };
 		008214FD18B15D0000E5A483 /* GestureRecognitionModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 008214FB18B15D0000E5A483 /* GestureRecognitionModel.h */; };
 		008214FE18B15D0000E5A483 /* GestureRecognitionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 008214FC18B15D0000E5A483 /* GestureRecognitionModel.m */; };
-		009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609BD18B11D3000F8AD1E /* GestureSetupView.h */; };
-		009609C018B11D3000F8AD1E /* GestureSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609BE18B11D3000F8AD1E /* GestureSetupView.m */; };
 		009609C318B1273300F8AD1E /* FXBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609C118B1273300F8AD1E /* FXBlurView.h */; };
 		009609C418B1273300F8AD1E /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 009609C218B1273300F8AD1E /* FXBlurView.m */; };
 		009609C718B13C7000F8AD1E /* UITouch+UniqueID.h in Headers */ = {isa = PBXBuildFile; fileRef = 009609C518B13C7000F8AD1E /* UITouch+UniqueID.h */; };
@@ -56,8 +54,6 @@
 		008214F718B1486600E5A483 /* Gestr-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Gestr-Prefix.pch"; sourceTree = "<group>"; };
 		008214FB18B15D0000E5A483 /* GestureRecognitionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionModel.h; sourceTree = "<group>"; };
 		008214FC18B15D0000E5A483 /* GestureRecognitionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionModel.m; sourceTree = "<group>"; };
-		009609BD18B11D3000F8AD1E /* GestureSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureSetupView.h; sourceTree = "<group>"; };
-		009609BE18B11D3000F8AD1E /* GestureSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureSetupView.m; sourceTree = "<group>"; };
 		009609C118B1273300F8AD1E /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		009609C218B1273300F8AD1E /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		009609C518B13C7000F8AD1E /* UITouch+UniqueID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+UniqueID.h"; sourceTree = "<group>"; };
@@ -106,8 +102,6 @@
 		000A68CE18B06AFC005340BA /* Gesture Setup */ = {
 			isa = PBXGroup;
 			children = (
-				000CAE3B18B07324000A77AF /* View */,
-				000CAE3A18B0731E000A77AF /* Model */,
 				000CAE3918B07317000A77AF /* Controller */,
 			);
 			name = "Gesture Setup";
@@ -139,22 +133,6 @@
 				000CAE3118B06BAA000A77AF /* GestureSetupController.m */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		000CAE3A18B0731E000A77AF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		000CAE3B18B07324000A77AF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				009609BD18B11D3000F8AD1E /* GestureSetupView.h */,
-				009609BE18B11D3000F8AD1E /* GestureSetupView.m */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		000CAE3C18B07329000A77AF /* Model */ = {
@@ -330,7 +308,6 @@
 				000A68CC18B06100005340BA /* GestrController.h in Headers */,
 				000CAE4018B07356000A77AF /* GestureRecognitionView.h in Headers */,
 				009C9A9B18B042B700CFF391 /* GestureTemplate.h in Headers */,
-				009609BF18B11D3000F8AD1E /* GestureSetupView.h in Headers */,
 				008214F818B1486600E5A483 /* Gestr-Prefix.pch in Headers */,
 				009C9A9118B042B700CFF391 /* Gesture.h in Headers */,
 				009C9A9318B042B700CFF391 /* GesturePoint.h in Headers */,
@@ -412,7 +389,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				009609C018B11D3000F8AD1E /* GestureSetupView.m in Sources */,
 				000A68CD18B06100005340BA /* GestrController.m in Sources */,
 				000CAE3318B06BAA000A77AF /* GestureSetupController.m in Sources */,
 				009C9A9418B042B700CFF391 /* GesturePoint.m in Sources */,
@@ -455,6 +431,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -484,6 +461,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREFIX_HEADER = "Gestr/Gestr-Prefix.pch";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

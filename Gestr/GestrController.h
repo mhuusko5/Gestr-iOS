@@ -3,7 +3,7 @@
 #import "FXBlurView.h"
 @class GestureSetupController, GestureRecognitionController;
 
-@interface GestrController : NSObject
+@interface GestrController : UIViewController
 
 @property GestureSetupController *gestureSetupController;
 @property GestureRecognitionController *gestureRecognitionController;
