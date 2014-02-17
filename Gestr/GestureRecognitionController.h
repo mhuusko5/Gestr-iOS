@@ -12,6 +12,7 @@
 
 - (id)initWithController:(GestrController *)controller;
 - (void)recognizeGestureWithStrokes:(NSMutableArray *)strokes;
+- (void)recognizePartialGestureWithStrokes:(NSMutableArray *)strokes;
 - (void)saveGestureWithStrokes:(NSMutableArray *)strokes;
 - (void)setup;
 - (void)loadInterface;

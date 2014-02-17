@@ -7,10 +7,12 @@
 @property UILabel *alertLabel;
 
 - (void)handleTouches:(NSSet *)touches type:(NSString *)type;
-- (void)startDetectingGestureWithTarget:(id)target andCallback:(SEL)callback;
+- (void)startDetectingGestureWithTarget:(id)target callback:(SEL)callback andMidCallback:(SEL)midCallback;
 - (void)finishDetectingGesture;
 - (void)finishDetectingGestureIgnore;
 - (void)finishDetectingGesture:(BOOL)ignore;
+- (void)checkPartial;
+- (void)checkPartialOnNewThread;
 - (void)resetInputTimers;
 - (void)resetAll;
 

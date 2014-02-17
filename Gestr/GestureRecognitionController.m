@@ -10,6 +10,7 @@
 
 @property GestrController *gestrController;
 @property UILabel *drawAlert;
+@property UILabel *partialRecognition;
 
 @end
 
@@ -26,7 +27,7 @@
 - (void)recognizeGestureWithStrokes:(NSMutableArray *)strokes {
 	GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
 	int rating;
-	if (result && (rating = result.score) >= 79) {
+	if (result && (rating = result.score) >= 80) {
 		NSString *bundleIdToLaunch = result.gestureIdentity;
 
 		SBApplication *appToLaunch = [[NSClassFromString(@"SBApplicationController") performSelector:NSSelectorFromString(@"sharedInstance")] performSelector:NSSelectorFromString(@"applicationWithDisplayIdentifier:") withObject:bundleIdToLaunch];
@@ -43,6 +44,27 @@
 	}
 
 	[_gestrController deactivate];
+}
+
+- (void)recognizePartialGestureWithStrokes:(NSMutableArray *)strokes {
+	_partialRecognition.text = @"";
+
+	GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
+	int rating;
+	if (result && (rating = result.score) >= 80) {
+		NSString *bundleIdToLaunch = result.gestureIdentity;
+
+		SBApplication *appToLaunch = [[NSClassFromString(@"SBApplicationController") performSelector:NSSelectorFromString(@"sharedInstance")] performSelector:NSSelectorFromString(@"applicationWithDisplayIdentifier:") withObject:bundleIdToLaunch];
+
+		if (appToLaunch) {
+			NSString *appName = [appToLaunch performSelector:NSSelectorFromString(@"displayName")];
+
+			_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", appName, rating];
+		}
+		else {
+			[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
+		}
+	}
 }
 
 - (void)saveGestureWithStrokes:(NSMutableArray *)strokes {
@@ -85,11 +107,19 @@
 
 	_recognitionView.alertLabel = _drawAlert;
 
+	float partialRecognitionFontSize = _recognitionView.frame.size.width / 16;
+	float partialRecognitionHeight = partialRecognitionFontSize * 1.4;
+	_partialRecognition = [[UILabel alloc] initWithFrame:CGRectMake(partialRecognitionHeight / 2, recognitionRect.size.height - partialRecognitionHeight - (partialRecognitionHeight / 4.0), recognitionRect.size.width - (partialRecognitionHeight / 2), partialRecognitionHeight)];
+	_partialRecognition.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:partialRecognitionFontSize];
+	_partialRecognition.textAlignment = UITextAlignmentLeft;
+	_partialRecognition.textColor = [UIColor whiteColor];
+	[_recognitionView addSubview:_partialRecognition];
+
 	[self configureRecognition];
 
 	[_gestrController.mainView addSubview:_recognitionView];
 
-	[_recognitionView startDetectingGestureWithTarget:self andCallback:@selector(recognizeGestureWithStrokes:)];
+	[_recognitionView startDetectingGestureWithTarget:self callback:@selector(recognizeGestureWithStrokes:) andMidCallback:@selector(recognizePartialGestureWithStrokes:)];
 }
 
 - (void)configureRecognition {
@@ -101,7 +131,7 @@
 
 	[_recognitionView resetAll];
 
-	[_recognitionView startDetectingGestureWithTarget:self andCallback:@selector(saveGestureWithStrokes:)];
+	[_recognitionView startDetectingGestureWithTarget:self callback:@selector(saveGestureWithStrokes:) andMidCallback:nil];
 }
 
 @end

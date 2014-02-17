@@ -8,8 +8,10 @@
 @property NSDate *lastMultitouchRedraw;
 @property NSTimer *noInputTimer;
 @property NSTimer *detectInputTimer;
+@property NSTimer *checkPartialTimer;
 @property id callbackTarget;
 @property SEL callbackSelector;
+@property SEL midCallbackSelector;
 
 @end
 
@@ -25,10 +27,10 @@
 		[self resetInputTimers];
 
 		if (!_detectInputTimer && [type isEqualToString:@"End"]) {
-			_detectInputTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(finishDetectingGesture) userInfo:nil repeats:NO];
+			_detectInputTimer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(finishDetectingGesture) userInfo:nil repeats:NO];
 		}
 		else {
-			BOOL shouldDraw = ([_lastMultitouchRedraw timeIntervalSinceNow] * -1000.0 > 10);
+			BOOL shouldDraw = ([_lastMultitouchRedraw timeIntervalSinceNow] * -1000.0 > 16);
 
 			for (UITouch *touch in[touches allObjects]) {
 				CGPoint drawPoint = [touch locationInView:self];
@@ -55,7 +57,7 @@
 				}
 				else {
 					tempPath = [UIBezierPath bezierPath];
-					[tempPath setLineWidth:self.frame.size.width / 36];
+					[tempPath setLineWidth:self.frame.size.width / 32];
 					[tempPath setLineCapStyle:kCGLineCapRound];
 					[tempPath setLineJoinStyle:kCGLineJoinRound];
 					[tempPath moveToPoint:drawPoint];
@@ -88,7 +90,7 @@
 	[self handleTouches:touches type:@"End"];
 }
 
-- (void)startDetectingGestureWithTarget:(id)target andCallback:(SEL)callback {
+- (void)startDetectingGestureWithTarget:(id)target callback:(SEL)callback andMidCallback:(SEL)midCallback {
 	[self resetAll];
 
 	_noInputTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(finishDetectingGestureIgnore) userInfo:nil repeats:NO];
@@ -97,6 +99,11 @@
 
 	_callbackTarget = target;
 	_callbackSelector = callback;
+
+	if (midCallback) {
+		_midCallbackSelector = midCallback;
+		_checkPartialTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(checkPartial) userInfo:nil repeats:YES];
+	}
 
 	_detectingInput = YES;
 }
@@ -126,6 +133,24 @@
 	[_callbackTarget performSelector:_callbackSelector withObject:orderedStrokes];
 }
 
+- (void)checkPartial {
+	if (_orderedStrokeIds.count > 0) {
+		[self performSelectorInBackground:@selector(checkPartialOnNewThread) withObject:nil];
+	}
+}
+
+- (void)checkPartialOnNewThread {
+	NSMutableArray *partialOrderedStrokeIds = [_orderedStrokeIds copy];
+	NSMutableDictionary *partialGestureStrokes = [_gestureStrokes copy];
+
+	NSMutableArray *partialOrderedStrokes = [NSMutableArray array];
+	for (int i = 0; i < partialOrderedStrokeIds.count; i++) {
+		[partialOrderedStrokes addObject:partialGestureStrokes[partialOrderedStrokeIds[i]]];
+	}
+
+	[_callbackTarget performSelector:_midCallbackSelector withObject:partialOrderedStrokes];
+}
+
 - (void)resetInputTimers {
 	if (_noInputTimer) {
 		[_noInputTimer invalidate];
@@ -140,6 +165,11 @@
 
 - (void)resetAll {
 	[self resetInputTimers];
+
+	if (_checkPartialTimer) {
+		[_checkPartialTimer invalidate];
+		_checkPartialTimer = nil;
+	}
 
 	_detectingInput = NO;
 
