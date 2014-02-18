@@ -1,9 +1,18 @@
 #import "GestureRecognitionController.h"
 
-@interface SBApplication : NSObject @end
+@interface SBApplication : NSObject
+- (NSString *)displayName;
+@end
 
-@interface UIApplication (Gestr)
-- (void)launchApplicationWithIdentifier:(NSString *)identifier suspended:(BOOL)suspended;
+@interface SBApplicationController : NSObject
++ (SBApplicationController *)sharedInstance;
+- (SBApplication *)applicationWithDisplayIdentifier:(NSString *)identifier;
+@end
+
+@interface SBUIController : NSObject
++ (SBUIController *)sharedInstance;
+- (void)activateApplicationFromSwitcher:(id)application;
+- (void)activateApplicationAnimated:(id)application;
 @end
 
 @interface GestureRecognitionController ()
@@ -30,10 +39,15 @@
 	if (result && (rating = result.score) >= 80) {
 		NSString *bundleIdToLaunch = result.gestureIdentity;
 
-		SBApplication *appToLaunch = [[NSClassFromString(@"SBApplicationController") performSelector:NSSelectorFromString(@"sharedInstance")] performSelector:NSSelectorFromString(@"applicationWithDisplayIdentifier:") withObject:bundleIdToLaunch];
+        SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier:bundleIdToLaunch];
 
 		if (appToLaunch) {
-			[[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleIdToLaunch suspended:NO];
+            SBUIController *uiController = (SBUIController *)[NSClassFromString(@"SBUIController") sharedInstance];
+            if ([uiController respondsToSelector:@selector(activateApplicationFromSwitcher:)]) {
+                [uiController activateApplicationFromSwitcher:appToLaunch];
+            } else {
+                [uiController activateApplicationAnimated:appToLaunch];
+            }
 		}
 		else {
 			[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
@@ -52,17 +66,15 @@
 	GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
 	int rating;
 	if (result && (rating = result.score) >= 80) {
-		NSString *bundleIdToLaunch = result.gestureIdentity;
+		NSString *partialBundleId = result.gestureIdentity;
 
-		SBApplication *appToLaunch = [[NSClassFromString(@"SBApplicationController") performSelector:NSSelectorFromString(@"sharedInstance")] performSelector:NSSelectorFromString(@"applicationWithDisplayIdentifier:") withObject:bundleIdToLaunch];
+		SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier:partialBundleId];
 
 		if (appToLaunch) {
-			NSString *appName = [appToLaunch performSelector:NSSelectorFromString(@"displayName")];
-
-			_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", appName, rating];
+			_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", [appToLaunch displayName], rating];
 		}
 		else {
-			[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
+			[_recognitionModel deleteGestureWithIdentity:partialBundleId];
 		}
 	}
 }
