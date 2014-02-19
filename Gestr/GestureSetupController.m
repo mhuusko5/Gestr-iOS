@@ -18,10 +18,6 @@
 	return self;
 }
 
-- (void)setup {
-	//ANY POST INIT SETUP CODE
-}
-
 - (void)loadInterface {
 	CGRect setupRect = _gestrController.mainView.frame;
 	setupRect.size.height *= 0.08;

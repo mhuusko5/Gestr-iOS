@@ -1,18 +1,24 @@
 #import "GestureRecognitionController.h"
 
 @interface SBApplication : NSObject
+
 - (NSString *)displayName;
+
 @end
 
 @interface SBApplicationController : NSObject
+
 + (SBApplicationController *)sharedInstance;
 - (SBApplication *)applicationWithDisplayIdentifier:(NSString *)identifier;
+
 @end
 
 @interface SBUIController : NSObject
+
 + (SBUIController *)sharedInstance;
 - (void)activateApplicationFromSwitcher:(id)application;
 - (void)activateApplicationAnimated:(id)application;
+
 @end
 
 @interface GestureRecognitionController ()
@@ -39,15 +45,16 @@
 	if (result && (rating = result.score) >= 80) {
 		NSString *bundleIdToLaunch = result.gestureIdentity;
 
-        SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier:bundleIdToLaunch];
+		SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : bundleIdToLaunch];
 
 		if (appToLaunch) {
-            SBUIController *uiController = (SBUIController *)[NSClassFromString(@"SBUIController") sharedInstance];
-            if ([uiController respondsToSelector:@selector(activateApplicationFromSwitcher:)]) {
-                [uiController activateApplicationFromSwitcher:appToLaunch];
-            } else {
-                [uiController activateApplicationAnimated:appToLaunch];
-            }
+			SBUIController *uiController = (SBUIController *)[NSClassFromString(@"SBUIController") sharedInstance];
+			if ([uiController respondsToSelector:@selector(activateApplicationFromSwitcher:)]) {
+				[uiController activateApplicationFromSwitcher:appToLaunch];
+			}
+			else {
+				[uiController activateApplicationAnimated:appToLaunch];
+			}
 		}
 		else {
 			[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
@@ -68,7 +75,7 @@
 	if (result && (rating = result.score) >= 80) {
 		NSString *partialBundleId = result.gestureIdentity;
 
-		SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier:partialBundleId];
+		SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : partialBundleId];
 
 		if (appToLaunch) {
 			_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", [appToLaunch displayName], rating];

@@ -30,7 +30,7 @@
 			_detectInputTimer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(finishDetectingGesture) userInfo:nil repeats:NO];
 		}
 		else {
-			BOOL shouldDraw = ([_lastMultitouchRedraw timeIntervalSinceNow] * -1000.0 > 16);
+			BOOL shouldDraw = ([_lastMultitouchRedraw timeIntervalSinceNow] * -1000.0 > 15);
 
 			for (UITouch *touch in[touches allObjects]) {
 				CGPoint drawPoint = [touch locationInView:self];
@@ -102,7 +102,7 @@
 
 	if (midCallback) {
 		_midCallbackSelector = midCallback;
-		_checkPartialTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(checkPartial) userInfo:nil repeats:YES];
+		_checkPartialTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(checkPartial) userInfo:nil repeats:YES];
 	}
 
 	_detectingInput = YES;

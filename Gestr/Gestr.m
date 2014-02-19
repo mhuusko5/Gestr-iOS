@@ -1,16 +1,18 @@
 #import <libactivator/libactivator.h>
 #import "GestrController.h"
 
-@interface Gestr : NSObject <LAListener> {
-	GestrController *gestrController;
-}
+@interface Gestr : NSObject <LAListener>
+
+@property GestrController *gestrController;
+@property BOOL listeningToSleep;
+
 @end
 
 @implementation Gestr
 
 - (BOOL)activatorDismiss {
-	if (gestrController.activated) {
-		[gestrController deactivate];
+	if (_gestrController.activated) {
+		[_gestrController deactivate];
 
 		return YES;
 	}
@@ -20,7 +22,13 @@
 
 - (void)activator:(LAActivator *)activator receiveEvent:(LAEvent *)event {
 	if (![self activatorDismiss]) {
-		[gestrController activate];
+		if (!_listeningToSleep) {
+			_listeningToSleep = YES;
+
+			CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), deviceSleep, CFSTR("com.apple.springboard.hasBlankedScreen"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+		}
+
+		[_gestrController activate];
 
 		[event setHandled:YES];
 	}
@@ -47,28 +55,22 @@ static void deviceSleep(CFNotificationCenterRef center, void *observer, CFString
 - (id)init {
 	self = [super init];
 
-	gestrController = [[GestrController alloc] init];
-
-	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), deviceSleep, CFSTR("com.apple.springboard.hasBlankedScreen"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+	_gestrController = [[GestrController alloc] init];
 
 	return self;
 }
 
-+ (Gestr *)sharedInstance {
-	static Gestr *gestrInstance = nil;
-	@synchronized(self)
-	{
-		if (!gestrInstance) {
-			gestrInstance = [[Gestr alloc] init];
-		}
++ (id)sharedInstance {
+	static id gestrInstance = nil;
+	if (!gestrInstance) {
+		gestrInstance = [[Gestr alloc] init];
 	}
 	return gestrInstance;
 }
 
 + (void)load {
-	@autoreleasepool
-	{
-		[[LAActivator sharedInstance] registerListener:[Gestr sharedInstance] forName:@"com.mhuusko5.Gestr"];
+	@autoreleasepool {
+		[[LAActivator sharedInstance] registerListener:[self sharedInstance] forName:@"com.mhuusko5.Gestr"];
 	}
 }
 
