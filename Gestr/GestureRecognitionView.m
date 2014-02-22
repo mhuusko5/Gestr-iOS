@@ -6,7 +6,6 @@
 @property NSMutableDictionary *gestureStrokes;
 @property NSMutableArray *orderedStrokeIds;
 @property NSDate *lastMultitouchRedraw;
-@property NSTimer *noInputTimer;
 @property NSTimer *detectInputTimer;
 @property NSTimer *checkPartialTimer;
 @property id callbackTarget;
@@ -24,7 +23,10 @@
 			_alertLabel = nil;
 		}
 
-		[self resetInputTimers];
+		if (_detectInputTimer) {
+			[_detectInputTimer invalidate];
+			_detectInputTimer = nil;
+		}
 
 		if (!_detectInputTimer && [type isEqualToString:@"End"]) {
 			_detectInputTimer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(finishDetectingGesture) userInfo:nil repeats:NO];
@@ -93,8 +95,6 @@
 - (void)startDetectingGestureWithTarget:(id)target callback:(SEL)callback andMidCallback:(SEL)midCallback {
 	[self resetAll];
 
-	_noInputTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(finishDetectingGestureIgnore) userInfo:nil repeats:NO];
-
 	self.multipleTouchEnabled = YES;
 
 	_callbackTarget = target;
@@ -151,20 +151,11 @@
 	[_callbackTarget performSelector:_midCallbackSelector withObject:partialOrderedStrokes];
 }
 
-- (void)resetInputTimers {
-	if (_noInputTimer) {
-		[_noInputTimer invalidate];
-		_noInputTimer = nil;
-	}
-
+- (void)resetAll {
 	if (_detectInputTimer) {
 		[_detectInputTimer invalidate];
 		_detectInputTimer = nil;
 	}
-}
-
-- (void)resetAll {
-	[self resetInputTimers];
 
 	if (_checkPartialTimer) {
 		[_checkPartialTimer invalidate];

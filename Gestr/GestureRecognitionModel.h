@@ -11,5 +11,6 @@
 - (BOOL)saveGestureWithStrokes:(NSMutableArray *)gestureStrokes andIdentity:(NSString *)identity;
 - (Gesture *)getGestureWithIdentity:(NSString *)identity;
 - (void)deleteGestureWithIdentity:(NSString *)identity;
+- (BOOL)anyLoadedGestures;
 
 @end

@@ -103,4 +103,8 @@
 	[_gestureDetector removeGestureWithIdentity:identity];
 }
 
+- (BOOL)anyLoadedGestures {
+	return ([_gestureDictionary allKeys].count > 0);
+}
+
 @end

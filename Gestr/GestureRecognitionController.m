@@ -40,48 +40,56 @@
 }
 
 - (void)recognizeGestureWithStrokes:(NSMutableArray *)strokes {
-	GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
-	int rating;
-	if (result && (rating = result.score) >= 80) {
-		NSString *bundleIdToLaunch = result.gestureIdentity;
+	if ([_recognitionModel anyLoadedGestures]) {
+		GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
+		int rating;
+		if (result && (rating = result.score) >= 80) {
+			NSString *bundleIdToLaunch = result.gestureIdentity;
 
-		SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : bundleIdToLaunch];
+			SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : bundleIdToLaunch];
 
-		if (appToLaunch) {
-			SBUIController *uiController = (SBUIController *)[NSClassFromString(@"SBUIController") sharedInstance];
-			if ([uiController respondsToSelector:@selector(activateApplicationFromSwitcher:)]) {
-				[uiController activateApplicationFromSwitcher:appToLaunch];
+			if (appToLaunch) {
+				SBUIController *uiController = (SBUIController *)[NSClassFromString(@"SBUIController") sharedInstance];
+				if ([uiController respondsToSelector:@selector(activateApplicationFromSwitcher:)]) {
+					[uiController activateApplicationFromSwitcher:appToLaunch];
+				}
+				else {
+					[uiController activateApplicationAnimated:appToLaunch];
+				}
 			}
 			else {
-				[uiController activateApplicationAnimated:appToLaunch];
+				[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
+
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"App for gesture no longer installed... gesture cleared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+				[alert show];
 			}
 		}
-		else {
-			[_recognitionModel deleteGestureWithIdentity:bundleIdToLaunch];
-
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"App for gesture no longer installed... gesture cleared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-			[alert show];
-		}
+	}
+	else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gestr" message:@"You need to assign some gestures first. Open an app, activate Gestr, tap \"Assign,\" and then draw." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
 	}
 
 	[_gestrController deactivate];
 }
 
 - (void)recognizePartialGestureWithStrokes:(NSMutableArray *)strokes {
-	_partialRecognition.text = @"";
+	if ([_recognitionModel anyLoadedGestures]) {
+		_partialRecognition.text = @"";
 
-	GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
-	int rating;
-	if (result && (rating = result.score) >= 80) {
-		NSString *partialBundleId = result.gestureIdentity;
+		GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
+		int rating;
+		if (result && (rating = result.score) >= 80) {
+			NSString *partialBundleId = result.gestureIdentity;
 
-		SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : partialBundleId];
+			SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : partialBundleId];
 
-		if (appToLaunch) {
-			_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", [appToLaunch displayName], rating];
-		}
-		else {
-			[_recognitionModel deleteGestureWithIdentity:partialBundleId];
+			if (appToLaunch) {
+				_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", [appToLaunch displayName], rating];
+			}
+			else {
+				[_recognitionModel deleteGestureWithIdentity:partialBundleId];
+			}
 		}
 	}
 }

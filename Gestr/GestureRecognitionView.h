@@ -13,7 +13,6 @@
 - (void)finishDetectingGesture:(BOOL)ignore;
 - (void)checkPartial;
 - (void)checkPartialOnNewThread;
-- (void)resetInputTimers;
 - (void)resetAll;
 
 @end
