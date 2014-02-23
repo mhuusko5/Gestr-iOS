@@ -41,13 +41,11 @@
 	NSMutableDictionary *gestures;
 	@try {
 		NSDictionary *storage = [NSDictionary dictionaryWithContentsOfFile:StoragePath];
-		NSData *gestureData;
-		if ((gestureData = [storage objectForKey:@"Gestures"])) {
-			gestures = [((NSDictionary *)[NSKeyedUnarchiver unarchiveObjectWithData:gestureData])mutableCopy];
-		}
-		else {
-			gestures = [NSMutableDictionary dictionary];
-		}
+        gestures = [[NSKeyedUnarchiver unarchiveObjectWithData:[storage objectForKey:@"Gestures"]] mutableCopy];
+
+        if (!gestures) {
+            @throw [NSException exceptionWithName:@"InvalidGesture" reason:@"Corrupted gesture data." userInfo:nil];
+        }
 	}
 	@catch (NSException *exception)
 	{
