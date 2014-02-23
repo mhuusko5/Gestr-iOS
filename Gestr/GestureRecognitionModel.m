@@ -31,21 +31,29 @@
 	@catch (NSException *exception)
 	{
 		_gestureDictionary = [NSMutableDictionary dictionary];
-		[self saveGestureDictionary];
-
 		_gestureDetector = [[GestureRecognizer alloc] init];
 	}
+
+	[self saveGestureDictionary];
 }
 
 - (BOOL)fetchGestureDictionary {
 	NSMutableDictionary *gestures;
 	@try {
-		NSDictionary *storage = [NSDictionary dictionaryWithContentsOfFile:StoragePath];
-        gestures = [[NSKeyedUnarchiver unarchiveObjectWithData:[storage objectForKey:@"Gestures"]] mutableCopy];
+		NSString *oldPlistPath = @"/var/mobile/Library/Preferences/com.mhuusko5.Gestr.plist";
+		if ([[NSFileManager defaultManager] fileExistsAtPath:oldPlistPath] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"portedOldPlist"]) {
+			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"portedOldPlist"];
+			[[NSUserDefaults standardUserDefaults] synchronize];
 
-        if (!gestures) {
-            @throw [NSException exceptionWithName:@"InvalidGesture" reason:@"Corrupted gesture data." userInfo:nil];
-        }
+			gestures = [[NSKeyedUnarchiver unarchiveObjectWithData:[[NSDictionary dictionaryWithContentsOfFile:oldPlistPath] objectForKey:@"Gestures"]] mutableCopy];
+		}
+		else {
+			gestures = [[NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"Gestures"]] mutableCopy];
+		}
+
+		if (!gestures) {
+			@throw [NSException exceptionWithName:@"InvalidGesture" reason:@"Corrupted gesture data." userInfo:nil];
+		}
 	}
 	@catch (NSException *exception)
 	{
@@ -56,12 +64,8 @@
 }
 
 - (void)saveGestureDictionary {
-	NSMutableDictionary *storage = [NSMutableDictionary dictionaryWithContentsOfFile:StoragePath];
-	if (!storage) {
-		storage = [NSMutableDictionary dictionary];
-	}
-	[storage setObject:[NSKeyedArchiver archivedDataWithRootObject:_gestureDictionary] forKey:@"Gestures"];
-	[storage writeToFile:StoragePath atomically:YES];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_gestureDictionary] forKey:@"Gestures"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (BOOL)saveGestureWithStrokes:(NSMutableArray *)gestureStrokes andIdentity:(NSString *)identity {
