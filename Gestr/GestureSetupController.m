@@ -53,8 +53,20 @@
 	[_gestrController.mainView addSubview:_setupView];
 }
 
+static NSString *lastValidAppBundleId;
+
++ (NSString *)LastValidAppBundleId {
+    return lastValidAppBundleId;
+}
+
 + (NSString *)CurrentAppBundleId {
-	return [[[UIApplication sharedApplication] performSelector:NSSelectorFromString(@"_accessibilityFrontMostApplication")] performSelector:NSSelectorFromString(@"displayIdentifier")];
+    NSString *bundleId = [[[UIApplication sharedApplication] performSelector:NSSelectorFromString(@"_accessibilityFrontMostApplication")] performSelector:NSSelectorFromString(@"displayIdentifier")];
+
+    if (bundleId) {
+        lastValidAppBundleId = bundleId;
+    }
+
+	return bundleId;
 }
 
 - (void)assignGesture:(id)sender {
@@ -70,7 +82,7 @@
 
 	[_clearButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
 
-	NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
+	NSString *currentBundleId = [GestureSetupController LastValidAppBundleId];
 
 	[_gestrController.gestureRecognitionController.recognitionModel deleteGestureWithIdentity:currentBundleId];
 

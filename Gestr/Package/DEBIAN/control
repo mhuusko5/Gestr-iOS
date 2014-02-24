@@ -1,10 +1,10 @@
 Package: com.mhuusko5.Gestr
 Name: Gestr
-Version: 1.0-5
+Version: 1.0-6
 Description: Launch apps with multitouch gestures you define!
 Section: Tweaks
 Depends: firmware (>= 6.0), mobilesubstrate, libactivator
 Architecture: iphoneos-arm
 Author: Mathew Huusko V <mhuusko5.seller@gmail.com>
-Homepage: https://mhuusko5.com/
+Homepage: http://mhuusko5.com/
 Maintainer: Mathew Huusko V <mhuusko5.seller@gmail.com>

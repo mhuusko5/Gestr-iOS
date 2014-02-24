@@ -95,7 +95,7 @@
 }
 
 - (void)saveGestureWithStrokes:(NSMutableArray *)strokes {
-	NSString *currentBundleId = [GestureSetupController CurrentAppBundleId];
+	NSString *currentBundleId = [GestureSetupController LastValidAppBundleId];
 
 	NSString *alertString;
 	if ([_recognitionModel saveGestureWithStrokes:strokes andIdentity:currentBundleId]) {

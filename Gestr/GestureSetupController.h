@@ -5,6 +5,7 @@
 
 - (id)initWithController:(GestrController *)controller;
 - (void)loadInterface;
++ (NSString *)LastValidAppBundleId;
 + (NSString *)CurrentAppBundleId;
 - (void)assignGesture:(id)sender;
 - (void)clearGesture:(id)sender;
