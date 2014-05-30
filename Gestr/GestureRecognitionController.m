@@ -43,7 +43,7 @@
 	if ([_recognitionModel anyLoadedGestures]) {
 		GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
 		int rating;
-		if (result && (rating = result.score) >= 80) {
+		if (result && (rating = result.score) >= minimumMatch) {
 			NSString *bundleIdToLaunch = result.gestureIdentity;
 
 			SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : bundleIdToLaunch];
@@ -79,7 +79,7 @@
 
 		GestureResult *result = [_recognitionModel.gestureDetector recognizeGestureWithStrokes:strokes];
 		int rating;
-		if (result && (rating = result.score) >= 80) {
+		if (result && (rating = result.score) >= minimumMatch) {
 			NSString *partialBundleId = result.gestureIdentity;
 
 			SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : partialBundleId];
@@ -111,9 +111,25 @@
 	[alert show];
 }
 
+static int minimumMatch = 80;
+static void preferencesChanged() {
+	NSDictionary *prefs;
+	if (!(prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mhuusko5.Gestr.plist"])) {
+		[prefs writeToFile:@"/var/mobile/Library/Preferences/com.mhuusko5.Gestr.plist" atomically:YES];
+		prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mhuusko5.Gestr.plist"];
+	}
+
+	if (prefs[@"MinimumMatch"]) {
+		minimumMatch = [prefs[@"MinimumMatch"] intValue];
+	}
+}
+
 - (void)setup {
 	_recognitionModel = [[GestureRecognitionModel alloc] init];
 	[_recognitionModel setup];
+
+    preferencesChanged();
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)preferencesChanged, CFSTR("com.mhuusko5.Gestr-preferencesChanged"), NULL, 0);
 }
 
 - (void)loadInterface {

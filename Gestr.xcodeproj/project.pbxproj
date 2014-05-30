@@ -51,6 +51,9 @@
 		000CAE3518B06BC0000A77AF /* GestureRecognitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionController.m; sourceTree = "<group>"; };
 		000CAE3E18B07356000A77AF /* GestureRecognitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionView.h; sourceTree = "<group>"; };
 		000CAE3F18B07356000A77AF /* GestureRecognitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionView.m; sourceTree = "<group>"; };
+		006786B419393E300009DC51 /* Gestr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Gestr.plist; sourceTree = "<group>"; };
+		006786B519393E300009DC51 /* Gestr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gestr.png; sourceTree = "<group>"; };
+		006786B619393E300009DC51 /* Gestr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gestr@2x.png"; sourceTree = "<group>"; };
 		008214F718B1486600E5A483 /* Gestr-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Gestr-Prefix.pch"; sourceTree = "<group>"; };
 		008214FB18B15D0000E5A483 /* GestureRecognitionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognitionModel.h; sourceTree = "<group>"; };
 		008214FC18B15D0000E5A483 /* GestureRecognitionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognitionModel.m; sourceTree = "<group>"; };
@@ -153,6 +156,25 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		006786B219393E300009DC51 /* PreferenceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				006786B319393E300009DC51 /* Preferences */,
+			);
+			name = PreferenceLoader;
+			path = Package/Library/PreferenceLoader;
+			sourceTree = "<group>";
+		};
+		006786B319393E300009DC51 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				006786B419393E300009DC51 /* Gestr.plist */,
+				006786B519393E300009DC51 /* Gestr.png */,
+				006786B619393E300009DC51 /* Gestr@2x.png */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		009C9A3B18B03F5000CFF391 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +250,7 @@
 		009C9A5518B03F5000CFF391 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				006786B219393E300009DC51 /* PreferenceLoader */,
 				009C9A5618B03F5000CFF391 /* MobileSubstrate */,
 				009C9A5918B03F5000CFF391 /* Activator */,
 			);
