@@ -10,29 +10,29 @@
 	<string>Gestr</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>97EE6E5B-7AB1-49AD-AF1E-48C6CCFFE524</key>
+		<key>DF7213E97EEA5B5C378A0D8806CBF72BB45FF78B</key>
 		<string>https://github.com/mhuusko5/Gestr-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Gestr.xcodeproj/project.xcworkspace</string>
+	<string>Gestr.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>97EE6E5B-7AB1-49AD-AF1E-48C6CCFFE524</key>
+		<key>DF7213E97EEA5B5C378A0D8806CBF72BB45FF78B</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mhuusko5/Gestr-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>97EE6E5B-7AB1-49AD-AF1E-48C6CCFFE524</string>
+	<string>DF7213E97EEA5B5C378A0D8806CBF72BB45FF78B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>97EE6E5B-7AB1-49AD-AF1E-48C6CCFFE524</string>
+			<string>DF7213E97EEA5B5C378A0D8806CBF72BB45FF78B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Gestr-iOS</string>
 		</dict>

@@ -60,8 +60,15 @@ static NSString *lastValidAppBundleId;
 }
 
 + (NSString *)CurrentAppBundleId {
-    NSString *bundleId = [[[UIApplication sharedApplication] performSelector:NSSelectorFromString(@"_accessibilityFrontMostApplication")] performSelector:NSSelectorFromString(@"displayIdentifier")];
-
+    NSString *bundleId;
+    
+    id frontApp = [[UIApplication sharedApplication] performSelector:@selector(_accessibilityFrontMostApplication)];
+    if ([frontApp respondsToSelector:@selector(displayIdentifier)]) {
+        bundleId = [frontApp performSelector:@selector(displayIdentifier)];
+    } else if ([frontApp respondsToSelector:@selector(bundleIdentifier)]) {
+        bundleId = [frontApp performSelector:@selector(bundleIdentifier)];
+    }
+    
     if (bundleId) {
         lastValidAppBundleId = bundleId;
     }

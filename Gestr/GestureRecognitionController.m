@@ -10,6 +10,7 @@
 
 + (SBApplicationController *)sharedInstance;
 - (SBApplication *)applicationWithDisplayIdentifier:(NSString *)identifier;
+- (SBApplication *)applicationWithBundleIdentifier:(NSString *)identifier;
 
 @end
 
@@ -46,8 +47,15 @@
 		if (result && (rating = result.score) >= minimumMatch) {
 			NSString *bundleIdToLaunch = result.gestureIdentity;
 
-			SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : bundleIdToLaunch];
-
+            SBApplicationController *appController = (SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance];
+            
+            SBApplication *appToLaunch;
+            if ([appController respondsToSelector:@selector(applicationWithBundleIdentifier:)]) {
+                appToLaunch = [appController applicationWithBundleIdentifier:bundleIdToLaunch];
+            } else if ([appController respondsToSelector:@selector(applicationWithDisplayIdentifier:)]) {
+                appToLaunch = [appController applicationWithDisplayIdentifier:bundleIdToLaunch];
+            }
+            
 			if (appToLaunch) {
 				SBUIController *uiController = (SBUIController *)[NSClassFromString(@"SBUIController") sharedInstance];
 				if ([uiController respondsToSelector:@selector(activateApplicationFromSwitcher:)]) {
@@ -82,7 +90,14 @@
 		if (result && (rating = result.score) >= minimumMatch) {
 			NSString *partialBundleId = result.gestureIdentity;
 
-			SBApplication *appToLaunch = [(SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithDisplayIdentifier : partialBundleId];
+            SBApplicationController *appController = (SBApplicationController *)[NSClassFromString(@"SBApplicationController") sharedInstance];
+            
+            SBApplication *appToLaunch;
+            if ([appController respondsToSelector:@selector(applicationWithBundleIdentifier:)]) {
+                appToLaunch = [appController applicationWithBundleIdentifier:partialBundleId];
+            } else if ([appController respondsToSelector:@selector(applicationWithDisplayIdentifier:)]) {
+                appToLaunch = [appController applicationWithDisplayIdentifier:partialBundleId];
+            }
 
 			if (appToLaunch) {
 				_partialRecognition.text = [NSString stringWithFormat:@"%@ – %i%%", [appToLaunch displayName], rating];

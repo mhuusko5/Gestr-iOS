@@ -1,8 +1,11 @@
+.DS_Store
 
-Gestr/Package/Library/MobileSubstrate/DynamicLibraries/Gestr.dylib
+*.xcuserstate
+*.xccheckout
+*.xcscheme
+*.xcsettings
 
-Gestr.xcodeproj/project.xcworkspace/xcuserdata/mhuusko.xcuserdatad/UserInterfaceState.xcuserstate
+xcuserdata/
 
+Packages/
 LatestBuild
-
-Packages/*
